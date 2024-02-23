@@ -7,18 +7,22 @@ class signin{
         passwordtxt :() =>cy.get("#password"),
         arrowusername :() =>cy.get('#username .css-tlfecz-indicatorContainer'),
         arrowpassword :() =>cy.get('#password .css-tlfecz-indicatorContainer'),
-        username :() => cy.get("#username > .css-yk16xz-control > .css-1hwfws3")
+        username :() => cy.get("#username > .css-yk16xz-control > .css-1hwfws3"),
+        usernamelist :() => cy.get("#username>div[class$='control'] div[class$='-menu']")
             }
 
 // The action ont he locators
-            verifyUsernameTextbox(){
-                this.elements.usernametxt().should('be.visible').type('demouser')
-                this.elements.usernametxt().trigger('keydown')
-                this.elements.usernametxt().trigger('click')
+            verifyUsernameTextbox(username){
+                this.elements.usernametxt().should('be.visible').type(username)
+                // this.elements.usernamelist().should('be.visible')
             }
 
             clickArrowUsername(){
                 this.elements.arrowusername().should('be.visible')
+            }
+            clickonPassword(){
+                this.elements.passwordtxt().should('be.visible').click()
+
             }
 }
 module.exports = new signin();
